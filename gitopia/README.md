@@ -9,7 +9,7 @@ NODE  | CPU     | RAM      | SSD     |
 
 ### Install otomatis
 ```
-wget -O gitopia.sh https://raw.githubusercontent.com/dwentz-inc/node-testnet/main/cosmos-gitopia/gitopia.sh && chmod +x gitopia.sh && ./gitopia.sh
+wget -O gitopia.sh https://raw.githubusercontent.com/dwentz-inc/node-testnet/main/gitopia/gitopia.sh && chmod +x gitopia.sh && ./gitopia.sh
 ```
 ### Load variable ke system
 ```
