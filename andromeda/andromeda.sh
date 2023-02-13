@@ -42,10 +42,10 @@ go version
 
 echo -e "\e[1m\e[32m3. Downloading and building binaries... \e[0m" && sleep 1
 # download binary
-cd $HOME
-git clone https://github.com/andromedaprotocol/andromedad
+cd $HOME && rm -rf andromedad
+git clone https://github.com/andromedaprotocol/andromedad.git
 cd andromedad
-git checkout Galileo-3v1.0.0-beta1
+git checkout galileo-3-v1.1.0-beta1
 make install
 
 # config
