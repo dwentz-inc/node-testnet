@@ -57,7 +57,7 @@ andromedad config node tcp://localhost:${ANDROMEDA_PORT}657
 andromedad init $NODENAME --chain-id $ANDROMEDA_CHAIN_ID
 
 # download genesis and addrbook
-wget -O genesis.json https://snapshots.nodeist.net/t/andromeda/genesis.json --inet4-only
+wget -O genesis.json "https://raw.githubusercontent.com/andromedaprotocol/testnets/galileo-3/genesis.json"
 mv genesis.json ~/.andromedad/config
 wget -O addrbook.json https://snapshots.nodeist.net/t/andromeda/addrbook.json --inet4-only
 mv addrbook.json ~/.andromedad/config
