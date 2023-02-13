@@ -137,10 +137,10 @@ andromedad tx distribution withdraw-rewards $ANDROMEDA_VALOPER_ADDRESS --from=$W
 ```
 sudo systemctl stop  andromedad && \
 sudo systemctl disable  andromedad && \
-rm /etc/systemd/system/ andromedad.service && \
+rm -rf /etc/systemd/system/andromedad.service && \
 sudo systemctl daemon-reload && \
 cd $HOME && \
-rm -rf  andromedad && \
+rm -rf andromedad && \
 rm -rf andromeda.sh && \
 rm -rf .andromedad && \
 rm -rf $(which andromedad)
