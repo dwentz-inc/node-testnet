@@ -57,11 +57,13 @@ andromedad config node tcp://localhost:${ANDROMEDA_PORT}657
 andromedad init $NODENAME --chain-id $ANDROMEDA_CHAIN_ID
 
 # download genesis and addrbook
-wget -O genesis.json "https://raw.githubusercontent.com/andromedaprotocol/testnets/galileo-3/genesis.json"
+wget -O genesis.json https://snapshots.nodeist.net/t/andromeda/genesis.json --inet4-only
 mv genesis.json ~/.andromedad/config
+wget -O addrbook.json https://snapshots.nodeist.net/t/andromeda/addrbook.json --inet4-only
+mv addrbook.json ~/.andromedad/config
 
 # set peers and seeds
-PEERS=""
+PEERS=06d4ab2369406136c00a839efc30ea5df9acaf11@10.128.0.44:26656,43d667323445c8f4d450d5d5352f499fa04839a8@192.168.0.237:26656,29a9c5bfb54343d25c89d7119fade8b18201c503@192.168.101.79:26656,6006190d5a3a9686bbcce26abc79c7f3f868f43a@37.252.184.230:26656
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.andromedad/config/config.toml
 
 # set custom ports
