@@ -86,13 +86,13 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.core/coreum-testnet-1/config/app.toml
 
 # set minimum gas price and timeout commit
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025utestcore\"/" $HOME/.core/coreum-testnet-1/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0utestcore\"/" $HOME/.core/coreum-testnet-1/config/app.toml
 
 # enable prometheus
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.core/coreum-testnet-1/config/config.toml
 
 # reset
-cored tendermint unsafe-reset-all --home $HOME/.core
+cored tendermint unsafe-reset-all --home $HOME/.core/coreum-testnet-1
 
 echo -e "\e[1m\e[32m4. Starting service... \e[0m" && sleep 1
 # create service
