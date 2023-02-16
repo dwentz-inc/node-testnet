@@ -46,7 +46,7 @@ cd $HOME
 git clone https://github.com/CoreumFoundation/coreum/
 cd coreum
 git checkout v0.1.1
-make install
+go build -o cored cmd/cored/main.go
 
 # config
 cored config chain-id $COREUM_CHAIN_ID
