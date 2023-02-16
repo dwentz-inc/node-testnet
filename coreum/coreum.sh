@@ -103,7 +103,7 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which cored) start --home $HOME/.core/coreum-testnet-1
+ExecStart=$(which cored) start --home $HOME/.core
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
