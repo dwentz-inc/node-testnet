@@ -35,6 +35,7 @@ WorkingDirectory=$HOME
 ExecStart= /usr/local/bin/wormholes \
   --datadir $HOME/.wormholes \
   --devnet \
+  --identity dwentz \
   --mine \
   --miner.threads 1 \
   --rpc \
