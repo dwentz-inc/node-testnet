@@ -20,7 +20,7 @@ go version
 cd $HOME
 git clone https://github.com/wormholes-org/wormholes
 cd wormholes
-make wormholes
+go build -o wormholes cmd/wormholes/main.go
 mv build/bin/wormholes /usr/local/bin
 
 #create service
