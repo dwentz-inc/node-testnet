@@ -1,4 +1,6 @@
 #!/bin/bash
+. ~/.bashrc
+mkdir -p .wormholes/wormholes
 
 #update package
 sudo apt update && sudo apt list --upgradable && sudo apt upgrade -y
