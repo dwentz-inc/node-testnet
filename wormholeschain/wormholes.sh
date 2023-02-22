@@ -21,7 +21,7 @@ cd $HOME
 git clone https://github.com/wormholes-org/wormholes
 cd wormholes
 go build -o wormholes cmd/wormholes/main.go
-mv build/bin/wormholes /usr/local/bin
+mv wormholes /usr/local/bin
 
 #create service
 tee /etc/systemd/system/wormholesd.service > /dev/null <<EOF
