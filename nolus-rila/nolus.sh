@@ -46,7 +46,7 @@ cd $HOME
 git clone https://github.com/Nolus-Protocol/nolus-core.git
 cd nolus-core
 git checkout v0.1.39
-make build
+make install
 
 
 # config
