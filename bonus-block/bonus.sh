@@ -7,12 +7,11 @@ if [ ! $NODENAME ]; then
 	read -p "Enter node name: " NODENAME
 	echo 'export NODENAME='$NODENAME >> $HOME/.bash_profile
 fi
-BONUS_PORT=34
+
 if [ ! $WALLET ]; then
 	echo "export WALLET=wallet" >> $HOME/.bash_profile
 fi
 echo "export BONUS_CHAIN_ID=blocktopia-01" >> $HOME/.bash_profile
-echo "export BONUS_PORT=$BONUS_PORT}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 
 echo '================================================='
@@ -50,7 +49,6 @@ make build
 # config
 bonus-blockd config chain-id=blocktopia-01
 bonus-blockd config keyring-backend test
-bonus-blockd config node tcp://localhost:${BONUS_PORT}657
 
 # init
 bonus-blockd init $NODENAME --chain-id=blocktopia-01
@@ -62,10 +60,6 @@ curl https://bonusblock-testnet.alter.network/genesis? | jq '.result.genesis' > 
 # set peers and seeds
 PEERS=e5e04918240cfe63e20059a8abcbe62f7eb05036@bonusblock-testnet-p2p.alter.network:26656
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.bonusblock/config/config.toml
-
-# set custom ports
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${BONUS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${BONUS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${BONUS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${BONUS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${BONUS_PORT}660\"%" $HOME/.bonusblock/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${BONUS_PORT}317\"%; s%^address = \":8080\"%address = \":${BONUS_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${BONUS_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${BONUS_PORT}091\"%" $HOME/.bonusblock/config/app.toml
 
 
 # config pruning
