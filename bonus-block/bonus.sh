@@ -48,12 +48,12 @@ cd BonusBlock-chain
 make build
 
 # config
-bonus-blockd config chain-id $BONUS_CHAIN_ID
+bonus-blockd config chain-id=blocktopia-01
 bonus-blockd config keyring-backend test
 bonus-blockd config node tcp://localhost:${BONUS_PORT}657
 
 # init
-bonus-blockd init $NODENAME --chain-id $BONUS_CHAIN_ID
+bonus-blockd init $NODENAME --chain-id=blocktopia-01
 
 # download genesis and addrbook
 rm ~/.bonusblock/config/genesis.json
