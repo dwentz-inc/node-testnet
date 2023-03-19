@@ -135,12 +135,12 @@ bonus-blockd tx distribution withdraw-rewards $BONUS_VALOPER_ADDRESS --from=$WAL
 
 ### Hapus node
 ```
-sudo systemctl stop  bonus-blockd && \
-sudo systemctl disable  bonus-blockd && \
+sudo systemctl stop bonus-blockd && \
+sudo systemctl disable bonus-blockd && \
 rm -rf /etc/systemd/system/bonus-blockd.service && \
 sudo systemctl daemon-reload && \
 cd $HOME && \
-rm -rf bonus-block && \
+rm -rf BonusBlock-chain && \
 rm -rf bonus.sh && \
 rm -rf .bonusblock && \
 rm -rf $(which bonus-blockd)
