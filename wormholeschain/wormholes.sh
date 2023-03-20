@@ -22,7 +22,7 @@ go version
 cd $HOME
 git clone https://github.com/wormholes-org/wormholes
 cd wormholes
-git checkout v0.13
+git checkout v0.13.0
 go build -o wormholes cmd/wormholes/main.go
 mv wormholes /usr/local/bin
 
