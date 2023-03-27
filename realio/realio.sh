@@ -11,7 +11,7 @@ REALIO_PORT=28
 if [ ! $WALLET ]; then
 	echo "export WALLET=wallet" >> $HOME/.bash_profile
 fi
-echo "export REALIO_CHAIN_ID=realionetwork_1110-2" >> $HOME/.bash_profile
+echo "export REALIO_CHAIN_ID=realionetwork_3300-1" >> $HOME/.bash_profile
 echo "export REALIO_PORT=${REALIO_PORT}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 
@@ -46,7 +46,7 @@ cd $HOME
 cd $HOME
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v0.7.2
+git checkout v0.8.0-rc2
 make install
 
 
@@ -59,11 +59,11 @@ realio-networkd config node tcp://localhost:${REALIO_PORT}657
 realio-networkd init $NODENAME --chain-id $REALIO_CHAIN_ID
 
 # download genesis and addrbook
-wget -O genesis.json "https://raw.githubusercontent.com/realiotech/testnets/main/realionetwork_1110-2/genesis.json"
+wget -O genesis.json "https://raw.githubusercontent.com/realiotech/testnets/main/realionetwork_3300-1/genesis.json"
 mv genesis.json ~/.realio-network/config
 
 # set peers and seeds
-PEERS="1057d9a2d9231093b4aadf3015efff8293290859@realio-testnet-peer.itrocket.net:443,bef3c95566f02c82603e5911540f7249cacd1867@p2p-realio.genznodes.dev:26656,3c2eda73a5a7ba73b3f9cc6f2a1452e58c765dbd@95.216.14.72:23656,397a0703715667b555086d663eccc1f13939c63c@realio.peer.stavr.tech:21096,6db56c79ee7438876d76550aa24c5acb51104306@65.109.104.118:61156,672c28ea5435aeffe5ae057774f9175a740ab4f2@178.63.102.172:37656"
+PEERS="ec2dbd6e5d25501c50fb8585b5678a7460ef11da@144.126.196.99:26656,5bd91f6e7e3bcaaddead32fd37d67458723fec73@159.223.132.183:26656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.realio-network/config/config.toml
 
 # set custom ports
