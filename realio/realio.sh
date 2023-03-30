@@ -46,8 +46,8 @@ cd $HOME
 cd $HOME
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v0.8.0-rc2
-make install
+git checkout v0.8.0-rc3
+make build
 
 
 # config
@@ -63,8 +63,10 @@ wget -O genesis.json "https://raw.githubusercontent.com/realiotech/testnets/main
 mv genesis.json ~/.realio-network/config
 
 # set peers and seeds
-PEERS="ec2dbd6e5d25501c50fb8585b5678a7460ef11da@144.126.196.99:26656,5bd91f6e7e3bcaaddead32fd37d67458723fec73@159.223.132.183:26656"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.realio-network/config/config.toml
+SEEDS="b0db1d25f10e94c13ba5080268e3f8c58eea6b69@rpc.realio-t.nodexcapital.com:23156,ee23c6b2367c7df0d71a7def5540cda879a06dab@realio-testnet-seed.itrocket.net:23656"
+sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.realio-network/config/config.toml
+sed -i -e "s|^seeds *=.*|seeds = \"$SEEDS\"|" $HOME/.realio-network/config/config.toml
+
 
 # set custom ports
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${REALIO_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${REALIO_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${REALIO_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${REALIO_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${REALIO_PORT}660\"%" $HOME/.realio-network/config/config.toml
