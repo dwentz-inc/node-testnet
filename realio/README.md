@@ -17,16 +17,8 @@ wget -O realio.sh https://raw.githubusercontent.com/dwentz-inc/node-testnet/main
 ```
 source $HOME/.bash_profile
 ```
-### Snapsot by #Nodeist
-```
-sudo apt update
-sudo apt install snapd -y
-sudo snap install lz4
-sudo systemctl stop realio-networkd
-realio-networkd tendermint unsafe-reset-all --home $HOME/.realio-network --keep-addr-book
-curl -L https://snap.nodeist.net/t/realio-network/realio-network.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.realio-network --strip-components 2
-sudo systemctl start realio-networkd && journalctl -u realio-networkd -f --no-hostname -o cat
-```
+### Snapsot
+
 ### Informasi node
 
 * cek sync node
@@ -139,13 +131,13 @@ realio-networkd tx distribution withdraw-rewards $REALIO_VALOPER_ADDRESS --from=
 
 ### Hapus node
 ```
-sudo systemctl stop  realio-networkd && \
-sudo systemctl disable  realio-networkd && \
-rm /etc/systemd/system/ realio-networkd.service && \
+sudo systemctl stop realio-networkd && \
+sudo systemctl disable realio-networkd && \
+rm /etc/systemd/system/realio-networkd.service && \
 sudo systemctl daemon-reload && \
 cd $HOME && \
-rm -rf  realio-network && \
+rm -rf realio-network && \
 rm -rf realio.sh && \
-rm -rf . realio-network && \
+rm -rf .realio-network && \
 rm -rf $(which realio-networkd)
 ```
