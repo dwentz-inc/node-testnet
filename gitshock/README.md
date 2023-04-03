@@ -9,7 +9,7 @@ sudo apt update -y
 sudo apt install ethereum -y
 sudo apt install jq -y
 ```
-# Installing Go
+### Installing Go
 ```
 ver="1.20.2" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
