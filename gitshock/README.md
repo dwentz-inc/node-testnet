@@ -63,13 +63,13 @@ touch geth.log
 ```
 nohup geth \
 --http --http.api="admin,eth,net,web3" \
---http.port 8543 \
+--http.port 8545 \
 --http.addr 0.0.0.0 \
 --authrpc.addr 0.0.0.0 \
 --authrpc.jwtsecret /root/cartenz/jwt.hex \
 --authrpc.port 8551 \
---discovery.port 30323 \
---port 30323 \
+--discovery.port 30303 \
+--port 30303 \
 --http.corsdomain=* \
 --identity "dwentz" \
 --http.vhosts=* \
