@@ -111,10 +111,27 @@ admin.nodeInfo.enode
 ```
 tail -f geth.log
 ```
-### Konfigurasi lighthouse
+### Konfigurasi lighthouse Beacon
+* download lighthouse
+```
+wget https://github.com/sigp/lighthouse/releases/download/v4.0.1/lighthouse-v4.0.1-x86_64-unknown-linux-gnu-portable.tar.gz
+```
+```
+tar -xvf lighthouse-v4.0.1-x86_64-unknown-linux-gnu-portable.tar.gz
+```
+```
+rm -rf lighthouse-v4.0.1-x86_64-unknown-linux-gnu-portable.tar.gz
+```
+```
+mv lighthouse /usr/local/bin
+```
 ```
 touch beacon1.log
 ```
+```
+screen -S beacon
+```
+* konfigurasi Beacon
 ```
 nohup lighthouse beacon \
 --eth1 \
@@ -131,4 +148,55 @@ nohup lighthouse beacon \
 --execution-jwt "/$HOME/cartenz/jwt.hex" \
 --suggested-fee-recipient=0x0198d33525fa9f5dee2D2626F952D718CA482733 \
 > /$HOME/cartenz/beacon1.log &
+```
+`ganti suggested-fee-recipient=0x019 dengan address yang didapat sebelumnya`
+* mendapatkan file ENR
+```
+curl http://localhost:5052/eth/v1/node/identity | jq 
+```
+`simpan file enr- lalu klik CTRL+AD`
+* cek log beacon
+```
+tail -f beacon1.log
+```
+### Konfigurasi Lighthouse
+```
+touch beacon2.log
+```
+```
+screen -S lighthouse
+```
+```
+nohup lighthouse \
+--testnet-dir /$HOME/cartenz/consensus \
+bn \
+--datadir "/$HOME/cartenz/data/beacon" \
+--eth1 \
+--http \
+--http-allow-sync-stalled \
+--execution-endpoints "http://127.0.0.1:8551" \
+--eth1-endpoints "http://127.0.0.1:8545" \
+--http-address 0.0.0.0 \
+--http-port 5053 \
+--http-allow-origin="*" \
+--listen-address 0.0.0.0 \
+--enr-udp-port 9001 \
+--enr-tcp-port 9001 \
+--port 9001 \
+--enr-address IP-NODE \
+--execution-jwt "/$HOME/cartenz/jwt.hex" \
+--boot-nodes="ENR ANDA,enr:-MS4QHXShZPtKwtexK2p9yCxMxDwQ-EvdH_VemoxyVyweuaBLOC_8cmOzyx7Gy-q6-X8KGT1d_rhAn_ekXnhpCkA_REHh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBMfxReAmd2k___________gmlkgnY0gmlwhJNLR9mJc2VjcDI1NmsxoQJB10N42nK6rr7Q_NIJNkJFi2uo6itMTOQlPZDcCy09T4hzeW5jbmV0c4gAAAAAAAAAAIN0Y3CCIyiDdWRwgiMo,enr:-MS4QEw_RpORuoXgJ0279QuVLLFAiXevNdYtU7vR8S1CY7X9CS6tceMbaxdIIJYRmHN43ClqHtE2b0H0maSb18cm9D0Hh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBMfxReAmd2k___________gmlkgnY0gmlwhJNLR9mJc2VjcDI1NmsxoQOkQIyCVHLbLjIFMjqNSJEUsbYMe4Tsv9blUWvN6Rsft4hzeW5jbmV0c4gAAAAAAAAAAIN0Y3CCIymDdWRwgiMp,enr:-LS4QExQqM_G3y2CfedjrGEbapN5Vprdy7Iq2gzfylwLW8PQf4Tf82XnQxLg9PbH8QLwsMaoWwYjTo7xHQ4oy4eCn7kBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBMfxReAmd2k___________gmlkgnY0iXNlY3AyNTZrMaEDec2pARmw1GLJHiXIDaG-6J74gZ1SyDcF_CuVUzRsmX2Ic3luY25ldHMAg3RjcIIjKoN1ZHCCIyo,enr:-Ly4QASQytrMTDShxZLaYNw_gLFKr_jgn264t812QqCIYtRXDAvLjNokixeG5nXJdCL94VcCmpF_HVIgJhgvR871pwABh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBMfxReAmd2k___________gmlkgnY0gmlwhDZSKp-Jc2VjcDI1NmsxoQJ01SgLN3nyqQc-6-pvOnVL4p3TKaqTEj8xcTyyVFLk-4hzeW5jbmV0cwCDdGNwgiMsg3VkcIIjLA" \
+--suggested-fee-recipient=ADDRESS ANDA  \
+> /$HOME/cartenz/beacon2.log &
+```
+`edit bagian --boot-nodes Tambahkan enr anda yang didapat sebeumnya`
+
+* cek log lighthouse
+``` 
+tail -f beacon2.log
+```
+`exit screen dengan CTRL+AD`
+### Staking validator
+```
+N/A
 ```
