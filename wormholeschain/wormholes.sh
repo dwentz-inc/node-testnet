@@ -9,7 +9,7 @@ sudo apt update && sudo apt list --upgradable && sudo apt upgrade -y
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential git make ncdu net-tools -y
 
 #install go
-ver="1.19.5" && \
+ver="1.20.2" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
@@ -22,8 +22,9 @@ go version
 cd $HOME
 git clone https://github.com/wormholes-org/wormholes
 cd wormholes
-git checkout v0.13.0
+git checkout v0.13.1
 go build -o wormholes cmd/wormholes/main.go
+cd build
 mv wormholes /usr/local/bin
 
 #create service
