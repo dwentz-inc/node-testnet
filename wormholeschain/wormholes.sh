@@ -23,8 +23,11 @@ cd $HOME
 git clone https://github.com/wormholes-org/wormholes
 cd wormholes
 git checkout v0.13.1
+sleep 5
+
+#build binary
+cd wormholes
 go build -o wormholes cmd/wormholes/main.go
-cd build
 mv wormholes /usr/local/bin
 
 #create service
