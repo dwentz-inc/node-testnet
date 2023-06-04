@@ -22,7 +22,7 @@ go version
 cd $HOME
 git clone https://github.com/wormholes-org/wormholes
 cd wormholes
-git checkout v0.13.1
+git checkout v0.13.2
 sleep 5
 
 #build binary
