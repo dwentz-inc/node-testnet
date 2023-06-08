@@ -1,19 +1,19 @@
 ### Taiko Node Installation
 ### Install Docker-compose
-```
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-```
-```
-sudo chmod +x /usr/local/bin/docker-compose
-```
+* docker-compose
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04
+* docker engine
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
+
 ### Install Node
 ```
 git clone https://github.com/taikoxyz/simple-taiko-node.git
 cd simple-taiko-node
 ```
 ```
-docker-compose pull
-```
+
+
 ### Setting
 ```
 cp .env.sample .env
