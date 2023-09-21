@@ -23,6 +23,7 @@ go version
 ```
 git clone https://github.com/playstructs/structsd
 cd structsd
+git checkout v0.1.0-beta
 go build -o structsd cmd/structsd/main.go
 mv structsd /root/go/bin
 ```
